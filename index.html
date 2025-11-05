@@ -3,33 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vishal Jadhav - Linux Administrator</title>
+    
+    <!-- SEO Meta Tags -->
+    <title>Vishal Jadhav | Linux & HPC System Administrator Portfolio</title>
+    <meta name="description" content="Portfolio for Vishal Jadhav, a Linux and HPC System Administrator with 3+ years of experience at Eviden (IIT Kharagpur) and Capgemini. Skilled in Ansible, Slurm, Lustre, and large-scale Linux server management.">
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.vishajadhav.co.in" />
+
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Load Inter font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Load Lucide Icons -->
     <script src="https://unpkg.com/lucide@0.395.0/dist/umd/lucide.js"></script>
     <style>
         /* Apply Inter font to the whole page */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f8fafc; /* Use a slightly lighter gray (Tailwind 'slate-50') */
+            background-color: #020617; /* Dark 'slate-950' background */
         }
-        /* Simple smooth scroll for nav links */
+        /* --- SMOOTH SCROLL --- */
         html {
             scroll-behavior: smooth;
         }
 
-        /* --- NEW: Attractive Hero Section Styles --- */
-
-        /* Custom gradient for the hero section */
+        /* --- Neon Hero Section Styles --- */
         .hero-gradient {
-            background-color: #ffffff;
+            background-color: #000000; /* Black background */
             position: relative;
-            overflow: hidden; /* This is key for the blurred shapes */
+            overflow: hidden;
         }
         
         /* Animated blurred "aurora" shapes */
@@ -37,29 +41,26 @@
             content: "";
             position: absolute;
             border-radius: 50%;
-            filter: blur(100px); /* Creates the soft, blurred effect */
+            filter: blur(120px);
             z-index: 1;
+            opacity: 0.25;
         }
-
         .hero-gradient::before {
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.2), transparent 70%); /* Faint blue */
+            background: radial-gradient(circle, #22d3ee, transparent 70%); /* Cyan */
             width: 400px;
             height: 400px;
             top: -100px;
             left: -100px;
             animation: aurora-bg 20s ease-in-out infinite alternate;
         }
-
         .hero-gradient::after {
-            background: radial-gradient(circle, rgba(99, 102, 241, 0.2), transparent 70%); /* Faint indigo */
+            background: radial-gradient(circle, #a855f7, transparent 70%); /* Purple */
             width: 500px;
             height: 500px;
             bottom: -150px;
             right: -150px;
             animation: aurora-bg-2 25s ease-in-out infinite alternate;
         }
-
-        /* Keyframe animations for the aurora shapes */
         @keyframes aurora-bg {
             0% { transform: translate(0px, 0px) scale(1); }
             100% { transform: translate(150px, 100px) scale(1.2); }
@@ -69,10 +70,10 @@
             100% { transform: translate(-100px, -50px) scale(1.1); }
         }
 
-        /* NEW: Terminal Mockup Styles */
+        /* Terminal Mockup Styles */
         .mockup-terminal .body {
-            height: 320px; /* Give it a fixed height */
-            font-size: 0.875rem; /* text-sm */
+            height: 320px;
+            font-size: 0.875rem;
         }
         .cursor {
             animation: blink 1s step-end infinite;
@@ -81,7 +82,7 @@
             50% { opacity: 0; }
         }
 
-        /* NEW: Load-in Animation */
+        /* Load-in Animation */
         .load-in {
             opacity: 0;
             transform: translateY(20px);
@@ -91,46 +92,57 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        /* --- End of New Styles --- */
 
+        /* --- Scroll Animation Styles --- */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
-<body class="text-slate-800">
+<body class="text-slate-200">
 
     <!-- Header & Navigation -->
-    <header class="bg-white/95 backdrop-blur-sm shadow-sm fixed w-full z-10 top-0 border-b border-slate-200">
+    <header class="bg-black/90 backdrop-blur-sm shadow-sm fixed w-full z-10 top-0 border-b border-slate-800">
         <nav class="container mx-auto max-w-6xl px-4 sm:px-6 py-4 flex justify-between items-center">
             <div class="text-2xl font-bold text-slate-900 flex items-center">
-                <!-- Added icon next to name -->
-                <i data-lucide="terminal" class="w-6 h-6 mr-2 text-blue-600"></i>
-                <!-- Added gradient text and heavier font weight -->
-                <a href="#" class="font-extrabold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">Vishal Jadhav</a>
+                <i data-lucide="terminal" class="w-6 h-6 mr-2 text-cyan-400"></i>
+                <a href="#" class="font-extrabold bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+                    Vishal Jadhav
+                </a>
             </div>
-            <div class="hidden md:flex items-center space-x-6"> <!-- Aligned items and adjusted spacing -->
-                <!-- Updated hover effect for links -->
-                <a href="#about" class="text-base font-medium text-slate-600 px-3 py-2 rounded-lg hover:bg-slate-100 hover:text-blue-600 transition-all duration-200">About</a>
-                <a href="#skills" class="text-base font-medium text-slate-600 px-3 py-2 rounded-lg hover:bg-slate-100 hover:text-blue-600 transition-all duration-200">Skills</a>
-                <a href="#experience" class="text-base font-medium text-slate-600 px-3 py-2 rounded-lg hover:bg-slate-100 hover:text-blue-600 transition-all duration-200">Experience</a>
-                <a href="#projects" class="text-base font-medium text-slate-600 px-3 py-2 rounded-lg hover:bg-slate-100 hover:text-blue-600 transition-all duration-200">Projects</a>
-                <a href="#certifications" class="text-base font-medium text-slate-600 px-3 py-2 rounded-lg hover:bg-slate-100 hover:text-blue-600 transition-all duration-200">Certifications</a>
-                <!-- Converted Contact link to a button -->
-                <a href="#contact" class="text-base font-medium bg-blue-600 text-white px-5 py-2 rounded-lg shadow-sm hover:bg-blue-700 transition-all duration-200 transform hover:-translate-y-0.5">Contact</a>
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#about" class="text-base font-medium text-slate-400 px-3 py-2 rounded-lg hover:bg-slate-800 hover:text-cyan-400 transition-all duration-200">About</a>
+                <a href="#skills" class="text-base font-medium text-slate-400 px-3 py-2 rounded-lg hover:bg-slate-800 hover:text-cyan-400 transition-all duration-200">Skills</a>
+                <a href="#experience" class="text-base font-medium text-slate-400 px-3 py-2 rounded-lg hover:bg-slate-800 hover:text-cyan-400 transition-all duration-200">Experience</a>
+                <a href="#projects" class="text-base font-medium text-slate-400 px-3 py-2 rounded-lg hover:bg-slate-800 hover:text-cyan-400 transition-all duration-200">Projects</a>
+                <a href="#certifications" class="text-base font-medium text-slate-400 px-3 py-2 rounded-lg hover:bg-slate-800 hover:text-cyan-400 transition-all duration-200">Certifications</a>
+                <!-- Link now points to contact.html -->
+                <a href="contact.html" class="text-base font-medium bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 text-black font-semibold px-5 py-2 rounded-lg shadow-lg hover:opacity-90 transition-all duration-200 transform hover:-translate-y-0.5">
+                    Contact
+                </a>
             </div>
             <!-- Mobile Menu Button -->
             <div class="md:hidden">
-                <button id="menu-btn" class="text-slate-800 focus:outline-none">
+                <button id="menu-btn" class="text-slate-200 focus:outline-none">
                     <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
                 </button>
             </div>
         </nav>
         <!-- Mobile Menu (Hidden by default) -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg border-t border-slate-200">
-            <a href="#about" class="block text-base font-medium text-slate-700 px-6 py-3 hover:bg-slate-50">About</a>
-            <a href="#skills" class="block text-base font-medium text-slate-700 px-6 py-3 hover:bg-slate-50">Skills</a>
-            <a href="#experience" class="block text-base font-medium text-slate-700 px-6 py-3 hover:bg-slate-50">Experience</a>
-            <a href="#projects" class="block text-base font-medium text-slate-700 px-6 py-3 hover:bg-slate-50">Projects</a>
-            <a href="#certifications" class="block text-base font-medium text-slate-700 px-6 py-3 hover:bg-slate-50">Certifications</a>
-            <a href="#contact" class="block text-base font-medium text-slate-700 px-6 py-3 hover:bg-slate-50">Contact</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-black shadow-lg border-t border-slate-800">
+            <a href="#about" class="block text-base font-medium text-slate-300 px-6 py-3 hover:bg-slate-900">About</a>
+            <a href="#skills" class="block text-base font-medium text-slate-300 px-6 py-3 hover:bg-slate-900">Skills</a>
+            <a href="#experience" class="block text-base font-medium text-slate-300 px-6 py-3 hover:bg-slate-900">Experience</a>
+            <a href="#projects" class="block text-base font-medium text-slate-300 px-6 py-3 hover:bg-slate-900">Projects</a>
+            <a href="#certifications" class="block text-base font-medium text-slate-300 px-6 py-3 hover:bg-slate-900">Certifications</a>
+            <!-- Link now points to contact.html -->
+            <a href="contact.html" class="block text-base font-medium text-slate-300 px-6 py-3 hover:bg-slate-900">Contact</a>
         </div>
     </header>
 
@@ -139,28 +151,30 @@
 
         <!-- Hero/About Section -->
         <section id="about" class="hero-gradient pt-32 pb-20 md:pt-40 md:pb-28 rounded-3xl -mt-4 overflow-hidden">
-            <!-- Added z-index to keep content on top of background shapes -->
             <div class="relative z-5 grid grid-cols-1 md:grid-cols-2 gap-10 items-center px-6 md:px-12">
                 <!-- Left Column (Text) -->
                 <div class="text-center md:text-left">
-                    <!-- Added load-in animation with staggered delays -->
-                    <span class="text-blue-600 font-semibold text-lg load-in" style="animation-delay: 100ms;">Linux & HPC System Administrator</span>
-                    <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-slate-900 mt-3 mb-6 tracking-tight bg-gradient-to-r from-blue-700 to-slate-900 bg-clip-text text-transparent load-in" style="animation-delay: 200ms;">Vishal Jadhav</h1>
-                    <p class="text-lg sm:text-xl text-slate-600 leading-relaxed mb-10 load-in" style="animation-delay: 300ms;">
+                    <span class="text-cyan-400 font-semibold text-lg load-in" style="animation-delay: 100ms;">Linux & HPC System Administrator</span>
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-white mt-3 mb-6 tracking-tight bg-gradient-to-r from-cyan-300 via-purple-400 to-pink-500 bg-clip-text text-transparent load-in" style="animation-delay: 200ms;">
+                        Vishal Jadhav
+                    </h1>
+                    <p class="text-lg sm:text-xl text-slate-300 leading-relaxed mb-10 load-in" style="animation-delay: 300ms;">
                         A 3+ year professional specializing in system stability, enterprise security, and process automation. Passionate about building and scaling reliable infrastructure with Ansible, Docker, and AWS.
                     </p>
                     <div class="flex justify-center md:justify-start space-x-4 load-in" style="animation-delay: 400ms;">
-                        <a href="#contact" class="inline-flex items-center bg-blue-600 text-white font-semibold px-6 py-3 rounded-xl shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:-translate-y-0.5">
+                        <!-- Link now points to contact.html -->
+                        <a href="contact.html" class="inline-flex items-center bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 text-black font-semibold px-6 py-3 rounded-xl shadow-lg hover:opacity-90 transition-all duration-300 transform hover:-translate-y-0.5">
                             <i data-lucide="send" class="w-5 h-5 mr-2"></i>
                             Get In Touch
                         </a>
-                        <a href="#projects" class="inline-flex items-center bg-white text-slate-700 font-semibold px-6 py-3 rounded-xl shadow-md border border-slate-200 hover:bg-slate-50 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5">
+                        <a href="#projects" class="inline-flex items-center bg-slate-800 text-slate-200 font-semibold px-6 py-3 rounded-xl shadow-md border border-slate-700 hover:bg-slate-700 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5">
                             <i data-lucide="folder-kanban" class="w-5 h-5 mr-2"></i>
                             View Projects
                         </a>
                     </div>
                 </div>
-                <!-- Right Column (NEW: Terminal Mockup) -->
+                
+                <!-- Right Column (Terminal Mockup) -->
                 <div class="flex justify-center items-center load-in" style="animation-delay: 500ms;">
                     <div class="mockup-terminal w-full max-w-md bg-slate-900 shadow-2xl rounded-lg border-2 border-slate-700">
                         <div class="header bg-slate-800 p-2 flex items-center rounded-t-lg">
@@ -171,15 +185,15 @@
                         </div>
                         <div class="body p-4 text-green-400 font-mono overflow-auto">
                             <p>$ vishal --show-bio</p>
-                            <p class="text-white">Connecting to vishal.com...</p>
-                            <p class="text-white">Loading bio...</p>
-                            <p class="text-white">---</p>
-                            <p><span class="text-blue-400">Name:</span> Vishal Jadhav</p>
-                            <p><span class="text-blue-400">Role:</span> Linux/HPC Admin</p>
-                            <p><span class="text-blue-400">Experience:</span> 3+ Years</p>
-                            <p><span class="text-blue-400">Focus:</span> Automation, Stability</p>
-                            <p><span class="text-blue-400">Core_Tools:</span> [ "Ansible", "Linux", "HPC" ]</p>
-                            <p class="text-white">---</p>
+                            <p class-><span class="text-white">Connecting to vishal.com...</span></p>
+                            <p class-><span class="text-white">Loading bio...</span></p>
+                            <p class-><span class="text-white">---</span></p>
+                            <p><span class="text-cyan-400">Name:</span> Vishal Jadhav</p>
+                            <p><span class="text-cyan-400">Role:</span> Linux/HPC Admin</p>
+                            <p><span class="text-cyan-400">Experience:</span> 3+ Years</p>
+                            <p><span class="text-cyan-400">Focus:</span> Automation, Stability</p>
+                            <p><span class="text-cyan-400">Core_Tools:</span> [ "Ansible", "Linux", "HPC" ]</p>
+                            <p class-><span class="text-white">---</span></p>
                             <p>$ <span class="cursor">_</span></p>
                         </div>
                     </div>
@@ -188,71 +202,70 @@
         </section>
 
         <!-- Technical Skills Section -->
-        <section id="skills" class="py-20 md:py-28 scroll-mt-20">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-4">Technical Toolbox</h2>
-            <p class="text-lg text-slate-600 text-center mb-12">My core set of tools and technologies for building and managing systems.</p>
+        <section id="skills" class="py-20 md:py-28 scroll-mt-20 fade-in-section">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-slate-100 mb-4">Technical Toolbox</h2>
+            <p class="text-lg text-slate-400 text-center mb-12">My core set of tools and technologies for building and managing systems.</p>
             
             <div class="max-w-4xl mx-auto space-y-10">
-                <!-- Category 1: OS & Scripting -->
+                <!-- Category 1 -->
                 <div>
-                    <h3 class="text-xl font-semibold mb-4 text-blue-700 flex items-center"><i data-lucide="terminal-square" class="w-5 h-5 mr-2"></i> OS & Scripting</h3>
+                    <h3 class="text-xl font-semibold mb-4 text-cyan-400 flex items-center"><i data-lucide="terminal-square" class="w-5 h-5 mr-2"></i> OS & Scripting</h3>
                     <div class="flex flex-wrap gap-3">
-                        <span class="bg-white border border-slate-200 text-slate-700 text-base font-medium px-4 py-2 rounded-lg shadow-sm">RHEL / CentOS</span>
-                        <span class="bg-white border border-slate-200 text-slate-700 text-base font-medium px-4 py-2 rounded-lg shadow-sm">Ubuntu Server / Debian</span>
-                        <span class="bg-white border border-slate-200 text-slate-700 text-base font-medium px-4 py-2 rounded-lg shadow-sm">Advanced Bash Scripting</span>
+                        <span class="bg-slate-800 border border-slate-700 text-slate-300 text-base font-medium px-4 py-2 rounded-lg shadow-sm">RHEL / CentOS</span>
+                        <span class="bg-slate-800 border border-slate-700 text-slate-300 text-base font-medium px-4 py-2 rounded-lg shadow-sm">Ubuntu Server / Debian</span>
+                        <span class="bg-slate-800 border border-slate-700 text-slate-300 text-base font-medium px-4 py-2 rounded-lg shadow-sm">Advanced Bash Scripting</span>
                     </div>
                 </div>
                 
-                <!-- Category 2: Automation & Config Mgmt -->
+                <!-- Category 2 -->
                 <div>
-                    <h3 class="text-xl font-semibold mb-4 text-blue-700 flex items-center"><i data-lucide="play-circle" class="w-5 h-5 mr-2"></i> Automation & Config Mgmt</h3>
+                    <h3 class="text-xl font-semibold mb-4 text-cyan-400 flex items-center"><i data-lucide="play-circle" class="w-5 h-5 mr-2"></i> Automation & Config Mgmt</h3>
                     <div class="flex flex-wrap gap-3">
-                        <span class="bg-white border border-slate-200 text-slate-700 text-base font-medium px-4 py-2 rounded-lg shadow-sm">Ansible (Playbooks, Roles)</span>
-                        <span class="bg-white border border-slate-200 text-slate-700 text-base font-medium px-4 py-2 rounded-lg shadow-sm">Jenkins / GitLab CI/CD</span>
-                        <span class="bg-white border border-slate-200 text-slate-700 text-base font-medium px-4 py-2 rounded-lg shadow-sm">Git</span>
+                        <span class="bg-slate-800 border border-slate-700 text-slate-300 text-base font-medium px-4 py-2 rounded-lg shadow-sm">Ansible (Playbooks, Roles)</span>
+                        <span class="bg-slate-800 border border-slate-700 text-slate-300 text-base font-medium px-4 py-2 rounded-lg shadow-sm">Jenkins / GitLab CI/CD</span>
+                        <span class="bg-slate-800 border border-slate-700 text-slate-300 text-base font-medium px-4 py-2 rounded-lg shadow-sm">Git</span>
                     </div>
                 </div>
 
-                <!-- Category 3: Cloud & Containers -->
+                <!-- Category 3 -->
                 <div>
-                    <h3 class="text-xl font-semibold mb-4 text-blue-700 flex items-center"><i data-lucide="cloud-cog" class="w-5 h-5 mr-2"></i> Cloud, Containers & HPC</h3>
+                    <h3 class="text-xl font-semibold mb-4 text-cyan-400 flex items-center"><i data-lucide="cloud-cog" class="w-5 h-5 mr-2"></i> Cloud, Containers & HPC</h3>
                     <div class="flex flex-wrap gap-3">
-                        <span class="bg-white border border-slate-200 text-slate-700 text-base font-medium px-4 py-2 rounded-lg shadow-sm">AWS (EC2, S3, VPC, IAM)</span>
-                        <span class="bg-white border border-slate-200 text-slate-700 text-base font-medium px-4 py-2 rounded-lg shadow-sm">Slurm Workload Manager</span>
-                        <span class="bg-white border border-slate-200 text-slate-700 text-base font-medium px-4 py-2 rounded-lg shadow-sm">Lustre Filesystem</span>
+                        <span class="bg-slate-800 border border-slate-700 text-slate-300 text-base font-medium px-4 py-2 rounded-lg shadow-sm">AWS (EC2, S3, VPC, IAM)</span>
+                        <span class="bg-slate-800 border border-slate-700 text-slate-300 text-base font-medium px-4 py-2 rounded-lg shadow-sm">Slurm Workload Manager</span>
+                        <span class="bg-slate-800 border border-slate-700 text-slate-300 text-base font-medium px-4 py-2 rounded-lg shadow-sm">Lustre Filesystem</span>
                     </div>
                 </div>
 
-                <!-- Category 4: Services & Monitoring -->
+                <!-- Category 4 -->
                 <div>
-                    <h3 class="text-xl font-semibold mb-4 text-blue-700 flex items-center"><i data-lucide="bar-chart-horizontal" class="w-5 h-5 mr-2"></i> Services & Monitoring</h3>
+                    <h3 class="text-xl font-semibold mb-4 text-cyan-400 flex items-center"><i data-lucide="bar-chart-horizontal" class="w-5 h-5 mr-2"></i> Services & Monitoring</h3>
                     <div class="flex flex-wrap gap-3">
-                        <span class="bg-white border border-slate-200 text-slate-700 text-base font-medium px-4 py-2 rounded-lg shadow-sm">Nginx / Apache</span>
-                        <span class="bg-white border border-slate-200 text-slate-700 text-base font-medium px-4 py-2 rounded-lg shadow-sm">Prometheus & Grafana</span>
-                        <span class="bg-white border border-slate-200 text-slate-700 text-base font-medium px-4 py-2 rounded-lg shadow-sm">Nagios / Dynatrace</span>
-                        <span class="bg-white border border-slate-200 text-slate-700 text-base font-medium px-4 py-2 rounded-lg shadow-sm">Firewalld / iptables</span>
-                        <span class="bg-white border border-slate-200 text-slate-700 text-base font-medium px-4 py-2 rounded-lg shadow-sm">LDAP / NFS / Samba</span>
+                        <span class="bg-slate-800 border border-slate-700 text-slate-300 text-base font-medium px-4 py-2 rounded-lg shadow-sm">Nginx / Apache</span>
+                        <span class="bg-slate-800 border border-slate-700 text-slate-300 text-base font-medium px-4 py-2 rounded-lg shadow-sm">Prometheus & Grafana</span>
+                        <span class="bg-slate-800 border border-slate-700 text-slate-300 text-base font-medium px-4 py-2 rounded-lg shadow-sm">Nagios / Dynatrace</span>
+                        <span class="bg-slate-800 border border-slate-700 text-slate-300 text-base font-medium px-4 py-2 rounded-lg shadow-sm">Firewalld / iptables</span>
+                        <span class="bg-slate-800 border border-slate-700 text-slate-300 text-base font-medium px-4 py-2 rounded-lg shadow-sm">LDAP / NFS / Samba</span>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Professional Experience Section -->
-        <section id="experience" class="py-20 md:py-28 scroll-mt-20 bg-slate-50 rounded-3xl shadow-lg border border-slate-200">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-16">Professional Experience</h2>
+        <section id="experience" class="py-20 md:py-28 scroll-mt-20 bg-slate-900 rounded-3xl shadow-lg border border-slate-800 fade-in-section">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-slate-100 mb-16">Professional Experience</h2>
             
-            <!-- FIX: Removed the buggy timeline and replaced with a card layout -->
             <div class="grid grid-cols-1 md:grid-cols-1 gap-12 max-w-3xl mx-auto">
                 
                 <!-- Job 1 -->
-                <div class="bg-white p-8 rounded-2xl shadow-xl border border-slate-200">
+                <div class="bg-black p-8 rounded-2xl shadow-xl border border-slate-800">
                     <div class="flex items-center mb-3">
-                        <i data-lucide="briefcase" class="w-6 h-6 mr-3 text-blue-600"></i>
-                        <h3 class="text-2xl font-semibold text-slate-900">Linux / HPC System Administrator – L2</h3>
+                        <i data-lucide="briefcase" class="w-6 h-6 mr-3 text-cyan-400"></i>
+                        <h3 class="text-2xl font-semibold text-slate-100">Linux / HPC System Administrator – L2</h3>
                     </div>
-                    <h4 class="text-lg font-medium text-slate-600 mb-1">Eviden (Client: IIT Kharagpur HPC Facility)</h4>
+                    <h4 class="text-lg font-medium text-slate-400 mb-1">Eviden (Client: IIT Kharagpur HPC Facility)</h4>
                     <p class="text-sm text-slate-500 mb-4">Jan 2024 – Present | Kharagpur, West Bengal</p>
-                    <ul class="list-disc list-outside ml-5 space-y-2 text-slate-700">
+                    <ul class="list-disc list-outside ml-5 space-y-2 text-slate-300">
                         <li>Administering 450+ HPC compute nodes and 5PB+ DDN/Lustre storage.</li>
                         <li>Responsible for Slurm workload manager operations (queues, fair-share, debugging).</li>
                         <li>Providing end-to-end support to research users (software, environment modules, MPI, job submission).</li>
@@ -263,14 +276,14 @@
                 </div>
 
                 <!-- Job 2 -->
-                <div class="bg-white p-8 rounded-2xl shadow-xl border border-slate-200">
+                <div class="bg-black p-8 rounded-2xl shadow-xl border border-slate-800">
                     <div class="flex items-center mb-3">
-                        <i data-lucide="briefcase" class="w-6 h-6 mr-3 text-blue-600"></i>
-                        <h3 class="text-2xl font-semibold text-slate-900">Linux Administrator – L2</h3>
+                        <i data-lucide="briefcase" class="w-6 h-6 mr-3 text-cyan-400"></i>
+                        <h3 class="text-2xl font-semibold text-slate-100">Linux Administrator – L2</h3>
                     </div>
-                    <h4 class="text-lg font-medium text-slate-600 mb-1">Capgemini</h4>
+                    <h4 class="text-lg font-medium text-slate-400 mb-1">Capgemini</h4>
                     <p class="text-sm text-slate-500 mb-4">Jul 2022 – Jan 2024 | Pune, India</p>
-                    <ul class="list-disc list-outside ml-5 space-y-2 text-slate-700">
+                    <ul class="list-disc list-outside ml-5 space-y-2 text-slate-300">
                         <li>Managed 2000+ Linux servers (RHEL, CentOS) in a large-scale enterprise environment.</li>
                         <li>Performed OS patching, Satellite fixes, kernel upgrades, and LVM resizing.</li>
                         <li>Handled incidents and alerts from Nagios & Dynatrace (CPU/Disk usage, memory leaks).</li>
@@ -282,43 +295,43 @@
         </section>
 
         <!-- Key Projects Section -->
-        <section id="projects" class="py-20 md:py-28 scroll-mt-20">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-16">Key Projects</h2>
+        <section id="projects" class="py-20 md:py-28 scroll-mt-20 fade-in-section">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-slate-100 mb-16">Key Projects</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 
                 <!-- Project 1 -->
-                <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-200 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl">
-                    <h3 class="text-2xl font-semibold text-slate-900 mb-3">HPC Node & Config Automation</h3>
-                    <p class="text-slate-600 leading-relaxed mb-6">
-                        <strong class="text-slate-800">Problem:</strong> Manually provisioning and patching 450+ HPC nodes was slow and created configuration drift.
+                <div class="bg-black p-8 rounded-2xl shadow-lg border border-slate-800 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-cyan-500/10 hover:shadow-xl">
+                    <h3 class="text-2xl font-semibold text-slate-100 mb-3">HPC Node & Config Automation</h3>
+                    <p class="text-slate-400 leading-relaxed mb-6">
+                        <strong class="text-slate-200">Problem:</strong> Manually provisioning and patching 450+ HPC nodes was slow and created configuration drift.
                         <br>
-                        <strong class="text-slate-800">Solution:</strong> Developed Ansible playbooks to automate OS patching, security hardening, and user account creation, ensuring all nodes are consistent.
+                        <strong class="text-slate-200">Solution:</strong> Developed Ansible playbooks to automate OS patching, security hardening, and user account creation, ensuring all nodes are consistent.
                         <br>
-                        <strong class="text-slate-800">Result:</strong> Reduced manual effort by over 90% and guaranteed identical configurations across the entire cluster.
+                        <strong class="text-slate-200">Result:</strong> Reduced manual effort by over 90% and guaranteed identical configurations across the entire cluster.
                     </p>
                     <div class="flex flex-wrap gap-2">
-                        <span class="bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-full">Ansible</span>
-                        <span class="bg-slate-100 text-slate-700 text-sm font-semibold px-3 py-1 rounded-full">Bash</span>
-                        <span class="bg-slate-100 text-slate-700 text-sm font-semibold px-3 py-1 rounded-full">HPC</span>
-                        <span class="bg-slate-100 text-slate-700 text-sm font-semibold px-3 py-1 rounded-full">Linux Hardening</span>
+                        <span class="bg-purple-900/50 text-purple-300 text-sm font-semibold px-3 py-1 rounded-full">Ansible</span>
+                        <span class="bg-slate-800 text-slate-400 text-sm font-semibold px-3 py-1 rounded-full">Bash</span>
+                        <span class="bg-slate-800 text-slate-400 text-sm font-semibold px-3 py-1 rounded-full">HPC</span>
+                        <span class="bg-slate-800 text-slate-400 text-sm font-semibold px-3 py-1 rounded-full">Linux Hardening</span>
                     </div>
                 </div>
 
                 <!-- Project 2 -->
-                <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-200 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl">
-                    <h3 class="text-2xl font-semibold text-slate-900 mb-3">Enterprise Server Monitoring</h3>
-                    <p class="text-slate-600 leading-relaxed mb-6">
-                        <strong class="text-slate-800">Problem:</strong> Lack of proactive monitoring on 2000+ servers led to reactive firefighting for CPU, memory, and disk issues.
+                <div class="bg-black p-8 rounded-2xl shadow-lg border border-slate-800 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-cyan-500/10 hover:shadow-xl">
+                    <h3 class="text-2xl font-semibold text-slate-100 mb-3">Enterprise Server Monitoring</h3>
+                    <p class="text-slate-400 leading-relaxed mb-6">
+                        <strong class="text-slate-200">Problem:</strong> Lack of proactive monitoring on 2000+ servers led to reactive firefighting for CPU, memory, and disk issues.
                         <br>
-                        <strong class="text-slate-800">Solution:</strong> Deployed and configured Nagios & Dynatrace agents to monitor key system metrics. Created custom alert rules and dashboards.
+                        <strong class="text-slate-200">Solution:</strong> Deployed and configured Nagios & Dynatrace agents to monitor key system metrics. Created custom alert rules and dashboards.
                         <br>
-                        <strong class="text-slate-800">Result:</strong> Enabled proactive incident response, reducing critical downtime by ~30% by catching issues before they impacted users.
+                        <strong class="text-slate-200">Result:</strong> Enabled proactive incident response, reducing critical downtime by ~30% by catching issues before they impacted users.
                     </p>
                     <div class="flex flex-wrap gap-2">
-                        <span class="bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-full">Nagios</span>
-                        <span class="bg-slate-100 text-slate-700 text-sm font-semibold px-3 py-1 rounded-full">Dynatrace</span>
-                        <span class="bg-slate-100 text-slate-700 text-sm font-semibold px-3 py-1 rounded-full">Monitoring</span>
-                        <span class="bg-slate-100 text-slate-700 text-sm font-semibold px-3 py-1 rounded-full">ITIL</span>
+                        <span class="bg-purple-900/50 text-purple-300 text-sm font-semibold px-3 py-1 rounded-full">Nagios</span>
+                        <span class="bg-slate-800 text-slate-400 text-sm font-semibold px-3 py-1 rounded-full">Dynatrace</span>
+                        <span class="bg-slate-800 text-slate-400 text-sm font-semibold px-3 py-1 rounded-full">Monitoring</span>
+                        <span class="bg-slate-800 text-slate-400 text-sm font-semibold px-3 py-1 rounded-full">ITIL</span>
                     </div>
                 </div>
 
@@ -326,65 +339,75 @@
         </section>
 
         <!-- Certifications Section -->
-        <section id="certifications" class="py-20 md:py-28 scroll-mt-20 bg-white rounded-3xl shadow-lg border border-slate-200">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-16">Certifications</h2>
+        <section id="certifications" class="py-20 md:py-28 scroll-mt-20 bg-slate-900 rounded-3xl shadow-lg border border-slate-800 fade-in-section">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-slate-100 mb-16">Certifications</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
                 <!-- Certification Card -->
-                <div class="flex items-center bg-slate-50 p-5 rounded-xl shadow-sm border border-slate-200">
-                    <div class="bg-green-100 p-3 rounded-full mr-5">
-                        <i data-lucide="award" class="w-6 h-6 text-green-600"></i>
+                <div class="flex items-center bg-black p-5 rounded-xl shadow-sm border border-slate-800">
+                    <div class="bg-cyan-900/50 p-3 rounded-full mr-5">
+                        <i data-lucide="award" class="w-6 h-6 text-cyan-400"></i>
                     </div>
-                    <span class="text-lg font-semibold text-slate-800">Red Hat Certified System Administrator (RHCSA)</span>
+                    <span class="text-lg font-semibold text-slate-200">Red Hat Certified System Administrator (RHCSA)</span>
                 </div>
                 <!-- Certification Card -->
-                <div class="flex items-center bg-slate-50 p-5 rounded-xl shadow-sm border border-slate-200">
-                    <div class="bg-green-100 p-3 rounded-full mr-5">
-                        <i data-lucide="award" class="w-6 h-6 text-green-600"></i>
+                <div class="flex items-center bg-black p-5 rounded-xl shadow-sm border border-slate-800">
+                    <div class="bg-cyan-900/50 p-3 rounded-full mr-5">
+                        <i data-lucide="award" class="w-6 h-6 text-cyan-400"></i>
                     </div>
-                    <span class="text-lg font-semibold text-slate-800">Red Hat Certified Engineer (RHCE)</span>
+                    <span class="text-lg font-semibold text-slate-200">Red Hat Certified Engineer (RHCE)</span>
                 </div>
                 <!-- Certification Card -->
-                <div class="flex items-center bg-slate-50 p-5 rounded-xl shadow-sm border border-slate-200">
-                    <div class="bg-green-100 p-3 rounded-full mr-5">
-                        <i data-lucide="award" class="w-6 h-6 text-green-600"></i>
+                <div class="flex items-center bg-black p-5 rounded-xl shadow-sm border border-slate-800">
+                    <div class="bg-cyan-900/50 p-3 rounded-full mr-5">
+                        <i data-lucide="award" classs="w-6 h-6 text-cyan-400"></i>
                     </div>
-                    <span class="text-lg font-semibold text-slate-800">ITIL 4 Foundation</span>
+                    <span class="text-lg font-semibold text-slate-200">ITIL 4 Foundation</span>
                 </div>
                 <!-- Certification Card -->
-                <div class="flex items-center bg-slate-50 p-5 rounded-xl shadow-sm border border-slate-200">
-                    <div class="bg-green-100 p-3 rounded-full mr-5">
-                        <i data-lucide="award" class="w-6 h-6 text-green-600"></i>
+                <div class="flex items-center bg-black p-5 rounded-xl shadow-sm border border-slate-800">
+                    <div class="bg-cyan-900/50 p-3 rounded-full mr-5">
+                        <i data-lucide="award" class="w-6 h-6 text-cyan-400"></i>
                     </div>
-                    <span class="text-lg font-semibold text-slate-800">Foundation of Project Management</span>
+                    <span class="text-lg font-semibold text-slate-200">Foundation of Project Management</span>
                 </div>
             </div>
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="py-20 md:py-28 scroll-mt-20 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Get In Touch</h2>
-            <p class="text-lg text-slate-600 mb-8 max-w-xl mx-auto">
+        <!-- This is a simple CTA linking to the contact page -->
+        <section id="contact" class="py-20 md:py-28 scroll-mt-20 text-center fade-in-section">
+            <h2 class="text-3xl md:text-4xl font-bold text-slate-100 mb-4">Let's Work Together</h2>
+            <p class="text-lg text-slate-400 mb-8 max-w-xl mx-auto">
                 I'm always open to discussing new opportunities, projects, or just chatting about tech.
             </p>
-            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
-                <!-- Replace with your actual links -->
-                <a href="mailto:vishaljadhav.linux@gmail.com" class="flex items-center justify-center w-full sm:w-auto bg-blue-600 text-white font-semibold px-6 py-3 rounded-xl shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:-translate-y-0.5">
+            <div class="flex justify-center">
+                <a href="contact.html" class="flex items-center justify-center w-full sm:w-auto bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 text-black font-semibold px-6 py-3 rounded-xl shadow-lg hover:opacity-90 transition-all duration-300 transform hover:-translate-y-0.5">
                     <i data-lucide="mail" class="w-5 h-5 mr-2"></i>
-                    Email Me
-                </a>
-                <a href="https://www.linkedin.com/in/vishal-jadhav-7066vj/" target="_blank" class="flex items-center justify-center w-full sm:w-auto bg-slate-700 text-white font-semibold px-6 py-3 rounded-xl shadow-lg hover:bg-slate-800 transition-all duration-300 transform hover:-translate-y-0.5">
-                    <i data-lucide="linkedin" class="w-5 h-5 mr-2"></i>
-                    LinkedIn
+                    Go to Contact Page
                 </a>
             </div>
+
+            <!-- MODIFICATION: Added LinkedIn and Email links here -->
+            <div class="flex justify-center items-center gap-6 mt-12">
+                <p class="text-slate-500">Or connect directly:</p>
+                <a href="https://www.linkedin.com/in/vishal-jadhav-7066vj/" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-cyan-400 transition-colors duration-300">
+                    <span class="sr-only">LinkedIn</span>
+                    <i data-lucide="linkedin" class="w-8 h-8"></i>
+                </a>
+                <a href="mailto:vishaljadhav.linux@gmail.com" class="text-slate-400 hover:text-cyan-400 transition-colors duration-300">
+                    <span class="sr-only">Email</span>
+                    <i data-lucide="mail-check" class="w-8 h-8"></i> <!-- Changed to mail-check for variety -->
+                </a>
+            </div>
+            <!-- END MODIFICATION -->
+
         </section>
 
     </div>
 
     <!-- Footer -->
-    <footer class="text-center py-8 bg-white border-t border-slate-200">
-        <p class="text-slate-600">&copy; 2025 Vishal Jadhav. All rights reserved.</p>
-        <p class="text-sm text-slate-500 mt-2">Built with HTML, Tailwind CSS, and GitHub Pages.</p>
+    <footer class="text-center py-8 bg-black border-t border-slate-800">
+        <p class="text-slate-500">&copy; 2025 Vishal Jadhav. All rights reserved.</p>
     </footer>
 
     <!-- Simple JS for Mobile Menu Toggle -->
@@ -403,8 +426,34 @@
             });
         });
 
-        // Init Lucide Icons
-        lucide.createIcons();
+        // --- Scroll Animation & Icon Init ---
+        (function() {
+            // Init Lucide Icons
+            lucide.createIcons();
+
+            // Scroll Animation Observer
+            const sections = document.querySelectorAll('.fade-in-section');
+            
+            const observerOptions = {
+                root: null, // relative to the viewport
+                rootMargin: '0px',
+                threshold: 0.1 // 10% of the element must be visible
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target); // Stop observing once it's visible
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+        })();
     </script>
 
 </body>
