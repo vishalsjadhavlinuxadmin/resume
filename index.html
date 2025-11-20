@@ -3,458 +3,582 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vishal Jadhav | HPC & Linux Engineer</title>
     
-    <!-- SEO Meta Tags -->
-    <title>Vishal Jadhav | Linux & HPC System Administrator Portfolio</title>
-    <meta name="description" content="Portfolio for Vishal Jadhav, a Linux and HPC System Administrator with 3+ years of experience at Eviden (IIT Kharagpur) and Capgemini. Skilled in Ansible, Slurm, Lustre, and large-scale Linux server management.">
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://www.vishajadhav.co.in" />
-
-    <!-- Load Tailwind CSS -->
+    <!-- Core Engines -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Load Inter font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Load Lucide Icons -->
-    <script src="https://unpkg.com/lucide@0.395.0/dist/umd/lucide.js"></script>
-    <style>
-        /* Apply Inter font to the whole page */
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #020617; /* Dark 'slate-950' background */
-        }
-        /* --- SMOOTH SCROLL --- */
-        html {
-            scroll-behavior: smooth;
-        }
+    <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 
-        /* --- Neon Hero Section Styles --- */
-        .hero-gradient {
-            background-color: #000000; /* Black background */
-            position: relative;
-            overflow: hidden;
+    <!-- Custom Terminal Fonts & Scrollbar -->
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        terminal: '#00FF9D',
+                        void: '#050505',
+                        panel: 'rgba(20, 20, 30, 0.6)',
+                        alert: '#F59E0B',
+                        cmd: '#1e1e1e'
+                    },
+                    fontFamily: {
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                        sans: ['"Inter"', 'sans-serif']
+                    },
+                    backgroundImage: {
+                        'grid-pattern': "linear-gradient(to right, #1f2937 1px, transparent 1px), linear-gradient(to bottom, #1f2937 1px, transparent 1px)"
+                    },
+                    animation: {
+                        'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background-color: #050505; color: #e2e8f0; scroll-behavior: smooth; }
+        /* Custom Scrollbar for Terminal Feel */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0a0a0a; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #00FF9D; }
+        
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
         
-        /* Animated blurred "aurora" shapes */
-        .hero-gradient::before, .hero-gradient::after {
-            content: "";
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(120px);
-            z-index: 1;
-            opacity: 0.25;
+        /* Scanline Effect for Splash Screen */
+        .scanline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: rgba(0, 255, 157, 0.3);
+            opacity: 0.6;
+            animation: scanline 6s linear infinite;
+            pointer-events: none;
+            z-index: 60;
         }
-        .hero-gradient::before {
-            background: radial-gradient(circle, #22d3ee, transparent 70%); /* Cyan */
-            width: 400px;
-            height: 400px;
-            top: -100px;
-            left: -100px;
-            animation: aurora-bg 20s ease-in-out infinite alternate;
-        }
-        .hero-gradient::after {
-            background: radial-gradient(circle, #a855f7, transparent 70%); /* Purple */
-            width: 500px;
-            height: 500px;
-            bottom: -150px;
-            right: -150px;
-            animation: aurora-bg-2 25s ease-in-out infinite alternate;
-        }
-        @keyframes aurora-bg {
-            0% { transform: translate(0px, 0px) scale(1); }
-            100% { transform: translate(150px, 100px) scale(1.2); }
-        }
-        @keyframes aurora-bg-2 {
-            0% { transform: translate(0px, 0px) scale(1); }
-            100% { transform: translate(-100px, -50px) scale(1.1); }
-        }
-
-        /* Terminal Mockup Styles */
-        .mockup-terminal .body {
-            height: 320px;
-            font-size: 0.875rem;
-        }
-        .cursor {
-            animation: blink 1s step-end infinite;
-        }
-        @keyframes blink {
-            50% { opacity: 0; }
-        }
-
-        /* Load-in Animation */
-        .load-in {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fade-in-up 0.8s ease-out forwards;
-        }
-        @keyframes fade-in-up {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* --- Scroll Animation Styles --- */
-        .fade-in-section {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-        .fade-in-section.is-visible {
-            opacity: 1;
-            transform: translateY(0);
+        @keyframes scanline {
+            0% { top: -10%; }
+            100% { top: 110%; }
         }
     </style>
 </head>
-<body class="text-slate-200">
+<body>
+    <div id="root"></div>
 
-    <!-- Header & Navigation -->
-    <header class="bg-black/90 backdrop-blur-sm shadow-sm fixed w-full z-10 top-0 border-b border-slate-800">
-        <nav class="container mx-auto max-w-6xl px-4 sm:px-6 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold text-slate-900 flex items-center">
-                <i data-lucide="terminal" class="w-6 h-6 mr-2 text-cyan-400"></i>
-                <a href="#" class="font-extrabold bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-                    Vishal Jadhav
-                </a>
-            </div>
-            <div class="hidden md:flex items-center space-x-6">
-                <a href="#about" class="text-base font-medium text-slate-400 px-3 py-2 rounded-lg hover:bg-slate-800 hover:text-cyan-400 transition-all duration-200">About</a>
-                <a href="#skills" class="text-base font-medium text-slate-400 px-3 py-2 rounded-lg hover:bg-slate-800 hover:text-cyan-400 transition-all duration-200">Skills</a>
-                <a href="#experience" class="text-base font-medium text-slate-400 px-3 py-2 rounded-lg hover:bg-slate-800 hover:text-cyan-400 transition-all duration-200">Experience</a>
-                <a href="#projects" class="text-base font-medium text-slate-400 px-3 py-2 rounded-lg hover:bg-slate-800 hover:text-cyan-400 transition-all duration-200">Projects</a>
-                <a href="#certifications" class="text-base font-medium text-slate-400 px-3 py-2 rounded-lg hover:bg-slate-800 hover:text-cyan-400 transition-all duration-200">Certifications</a>
-                <!-- Link now points to contact.html -->
-                <a href="contact.html" class="text-base font-medium bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 text-black font-semibold px-5 py-2 rounded-lg shadow-lg hover:opacity-90 transition-all duration-200 transform hover:-translate-y-0.5">
-                    Contact
-                </a>
-            </div>
-            <!-- Mobile Menu Button -->
-            <div class="md:hidden">
-                <button id="menu-btn" class="text-slate-200 focus:outline-none">
-                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-                </button>
-            </div>
-        </nav>
-        <!-- Mobile Menu (Hidden by default) -->
-        <div id="mobile-menu" class="hidden md:hidden bg-black shadow-lg border-t border-slate-800">
-            <a href="#about" class="block text-base font-medium text-slate-300 px-6 py-3 hover:bg-slate-900">About</a>
-            <a href="#skills" class="block text-base font-medium text-slate-300 px-6 py-3 hover:bg-slate-900">Skills</a>
-            <a href="#experience" class="block text-base font-medium text-slate-300 px-6 py-3 hover:bg-slate-900">Experience</a>
-            <a href="#projects" class="block text-base font-medium text-slate-300 px-6 py-3 hover:bg-slate-900">Projects</a>
-            <a href="#certifications" class="block text-base font-medium text-slate-300 px-6 py-3 hover:bg-slate-900">Certifications</a>
-            <!-- Link now points to contact.html -->
-            <a href="contact.html" class="block text-base font-medium text-slate-300 px-6 py-3 hover:bg-slate-900">Contact</a>
-        </div>
-    </header>
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+        const { motion, AnimatePresence } = window.Motion;
+        
+        // --- COMPONENT: CINEMATIC SPLASH SCREEN ---
+        const SplashScreen = ({ onComplete }) => {
+            const [progress, setProgress] = useState(0);
+            const [status, setStatus] = useState("INITIALIZING_KERNEL");
 
-    <!-- Main Content Area -->
-    <div class="container mx-auto max-w-6xl px-4 sm:px-6">
+            useEffect(() => {
+                // Simulate a boot sequence
+                const sequence = [
+                    { pct: 10, text: "LOADING_MODULES: RHEL_KERNEL_V9" },
+                    { pct: 30, text: "MOUNTING_FILESYSTEM: /home/vishal" },
+                    { pct: 55, text: "CONNECTING_HPC_CLUSTER: NODE_01" },
+                    { pct: 80, text: "VERIFYING_SECURITY_KEYS..." },
+                    { pct: 100, text: "ACCESS_GRANTED" }
+                ];
 
-        <!-- Hero/About Section -->
-        <section id="about" class="hero-gradient pt-32 pb-20 md:pt-40 md:pb-28 rounded-3xl -mt-4 overflow-hidden">
-            <div class="relative z-5 grid grid-cols-1 md:grid-cols-2 gap-10 items-center px-6 md:px-12">
-                <!-- Left Column (Text) -->
-                <div class="text-center md:text-left">
-                    <span class="text-cyan-400 font-semibold text-lg load-in" style="animation-delay: 100ms;">Linux & HPC System Administrator</span>
-                    <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-white mt-3 mb-6 tracking-tight bg-gradient-to-r from-cyan-300 via-purple-400 to-pink-500 bg-clip-text text-transparent load-in" style="animation-delay: 200ms;">
-                        Vishal Jadhav
-                    </h1>
-                    <p class="text-lg sm:text-xl text-slate-300 leading-relaxed mb-10 load-in" style="animation-delay: 300ms;">
-                        A 3+ year professional specializing in system stability, enterprise security, and process automation. Passionate about building and scaling reliable infrastructure with Ansible, Docker, and AWS.
-                    </p>
-                    <div class="flex justify-center md:justify-start space-x-4 load-in" style="animation-delay: 400ms;">
-                        <!-- Link now points to contact.html -->
-                        <a href="contact.html" class="inline-flex items-center bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 text-black font-semibold px-6 py-3 rounded-xl shadow-lg hover:opacity-90 transition-all duration-300 transform hover:-translate-y-0.5">
-                            <i data-lucide="send" class="w-5 h-5 mr-2"></i>
-                            Get In Touch
-                        </a>
-                        <a href="#projects" class="inline-flex items-center bg-slate-800 text-slate-200 font-semibold px-6 py-3 rounded-xl shadow-md border border-slate-700 hover:bg-slate-700 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5">
-                            <i data-lucide="folder-kanban" class="w-5 h-5 mr-2"></i>
-                            View Projects
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Right Column (Terminal Mockup) -->
-                <div class="flex justify-center items-center load-in" style="animation-delay: 500ms;">
-                    <div class="mockup-terminal w-full max-w-md bg-slate-900 shadow-2xl rounded-lg border-2 border-slate-700">
-                        <div class="header bg-slate-800 p-2 flex items-center rounded-t-lg">
-                            <div class="dot bg-red-500 w-3 h-3 rounded-full mr-2"></div>
-                            <div class="dot bg-yellow-500 w-3 h-3 rounded-full mr-2"></div>
-                            <div class="dot bg-green-500 w-3 h-3 rounded-full"></div>
-                            <span class="text-xs text-slate-400 font-sans ml-auto">bash</span>
+                let currentStep = 0;
+
+                const timer = setInterval(() => {
+                    setProgress(old => {
+                        if (old >= 100) {
+                            clearInterval(timer);
+                            setTimeout(onComplete, 800); // Short delay before hiding
+                            return 100;
+                        }
+                        
+                        // Update text based on progress thresholds
+                        if (currentStep < sequence.length && old >= sequence[currentStep].pct) {
+                            setStatus(sequence[currentStep].text);
+                            currentStep++;
+                        }
+                        
+                        // Variable speed for realism
+                        const jump = Math.random() * 5;
+                        return Math.min(old + jump, 100);
+                    });
+                }, 50);
+
+                return () => clearInterval(timer);
+            }, []);
+
+            return (
+                <motion.div
+                    className="fixed inset-0 z-50 bg-black flex flex-col items-center justify-center font-mono text-terminal p-4"
+                    exit={{ opacity: 0, filter: "blur(20px)", scale: 1.1 }}
+                    transition={{ duration: 0.8, ease: "easeInOut" }}
+                >
+                    <div className="scanline"></div>
+                    
+                    <div className="w-full max-w-md">
+                        {/* Header */}
+                        <div className="flex justify-between items-end mb-2">
+                            <h1 className="text-2xl font-bold tracking-tighter">VISHAL_OS <span className="text-xs font-normal opacity-50">v3.0</span></h1>
+                            <span className="text-xs opacity-70">{Math.floor(progress)}%</span>
                         </div>
-                        <div class="body p-4 text-green-400 font-mono overflow-auto">
-                            <p>$ vishal --show-bio</p>
-                            <p class-><span class="text-white">Connecting to vishal.com...</span></p>
-                            <p class-><span class="text-white">Loading bio...</span></p>
-                            <p class-><span class="text-white">---</span></p>
-                            <p><span class="text-cyan-400">Name:</span> Vishal Jadhav</p>
-                            <p><span class="text-cyan-400">Role:</span> Linux/HPC Admin</p>
-                            <p><span class="text-cyan-400">Experience:</span> 3+ Years</p>
-                            <p><span class="text-cyan-400">Focus:</span> Automation, Stability</p>
-                            <p><span class="text-cyan-400">Core_Tools:</span> [ "Ansible", "Linux", "HPC" ]</p>
-                            <p class-><span class="text-white">---</span></p>
-                            <p>$ <span class="cursor">_</span></p>
+
+                        {/* Progress Bar */}
+                        <div className="w-full h-1 bg-gray-900 mb-4 overflow-hidden relative">
+                            <motion.div 
+                                className="h-full bg-terminal shadow-[0_0_15px_#00FF9D]"
+                                style={{ width: `${progress}%` }}
+                            />
+                        </div>
+
+                        {/* Status Text */}
+                        <div className="h-6 text-xs md:text-sm text-terminal/80 whitespace-nowrap overflow-hidden">
+                            > {status}<span className="animate-pulse">_</span>
+                        </div>
+                        
+                        {/* Decorative Grid Code */}
+                        <div className="mt-12 grid grid-cols-4 gap-1 opacity-20 text-[10px]">
+                            {Array.from({ length: 16 }).map((_, i) => (
+                                <div key={i}>{Math.random().toString(16).substring(2, 8).toUpperCase()}</div>
+                            ))}
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
+                </motion.div>
+            );
+        };
 
-        <!-- Technical Skills Section -->
-        <section id="skills" class="py-20 md:py-28 scroll-mt-20 fade-in-section">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-slate-100 mb-4">Technical Toolbox</h2>
-            <p class="text-lg text-slate-400 text-center mb-12">My core set of tools and technologies for building and managing systems.</p>
+        // --- EXISTING COMPONENTS ---
+
+        const TerminalHero = () => {
+            const [text, setText] = useState('');
+            const fullText = "root@vishal-portfolio:~# ./init_career.sh\n> Initializing Kernel...\n> Loading Modules: RHEL, HPC, LVM...\n> Connection Established: HPC Cluster [ONLINE]\n> Access Granted: Welcome, Admin.";
             
-            <div class="max-w-4xl mx-auto space-y-10">
-                <!-- Category 1 -->
+            useEffect(() => {
+                // Delay start slightly to sync with splash screen fade out
+                const startDelay = setTimeout(() => {
+                    let i = 0;
+                    const timer = setInterval(() => {
+                        setText(fullText.slice(0, i));
+                        i++;
+                        if (i > fullText.length) clearInterval(timer);
+                    }, 30);
+                }, 500);
+                return () => clearTimeout(startDelay);
+            }, []);
+
+            return (
+                <div className="w-full max-w-4xl mx-auto mt-20 mb-12 p-1">
+                    <div className="bg-cmd rounded-t-lg p-2 flex items-center gap-2 border-b border-gray-700">
+                        <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                        <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                        <span className="ml-2 text-xs text-gray-400 font-mono">vishal@hpc-node-01:~</span>
+                    </div>
+                    <div className="bg-black/90 p-6 rounded-b-lg border border-gray-800 shadow-[0_0_30px_rgba(0,255,157,0.1)] min-h-[200px]">
+                        <pre className="font-mono text-terminal text-sm md:text-base whitespace-pre-wrap leading-relaxed">
+                            {text}<span className="animate-pulse">_</span>
+                        </pre>
+                    </div>
+                </div>
+            );
+        };
+
+        const ExperienceCard = ({ role, company, date, description, tech, active }) => {
+            return (
+                <motion.div 
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, margin: "-50px" }} // Improved animation trigger
+                    transition={{ duration: 0.5 }}
+                    className="relative pl-8 border-l-2 border-gray-800 hover:border-terminal transition-colors duration-300 group pb-12 last:pb-0"
+                >
+                    <div className={`absolute left-[-9px] top-0 w-4 h-4 rounded-full border-2 border-black ${active ? 'bg-terminal shadow-[0_0_10px_#00FF9D]' : 'bg-gray-600'} transition-all duration-300`}></div>
+                    
+                    <div className="glass-panel p-6 rounded-xl hover:bg-white/5 transition-all duration-300 relative overflow-hidden group">
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-terminal/5 rounded-full blur-3xl group-hover:bg-terminal/10 transition-all duration-500 translate-x-10 -translate-y-10"></div>
+
+                        <div className="flex flex-col md:flex-row md:items-center justify-between mb-4 relative z-10">
+                            <div>
+                                <h3 className="text-2xl font-bold text-white group-hover:text-terminal transition-colors">{role}</h3>
+                                <div className="flex items-center gap-2 text-terminal/80 font-mono text-sm mt-1">
+                                    <i data-lucide="server" className="w-4 h-4"></i>
+                                    {company}
+                                </div>
+                            </div>
+                            <span className="text-gray-500 font-mono text-xs border border-gray-800 px-3 py-1 rounded-full mt-2 md:mt-0 bg-black/50">
+                                {date}
+                            </span>
+                        </div>
+
+                        <ul className="space-y-3 mb-6 relative z-10">
+                            {description.map((item, i) => (
+                                <li key={i} className="text-gray-300 text-sm flex items-start gap-3">
+                                    <span className="text-terminal mt-1">➜</span>
+                                    {item}
+                                </li>
+                            ))}
+                        </ul>
+
+                        <div className="flex flex-wrap gap-2 relative z-10">
+                            {tech.map((t, i) => (
+                                <span key={i} className="px-2 py-1 bg-terminal/10 text-terminal text-xs rounded border border-terminal/20 font-mono">
+                                    {t}
+                                </span>
+                            ))}
+                        </div>
+                    </div>
+                </motion.div>
+            );
+        };
+
+        const ProjectCard = ({ title, problem, solution, result, tags }) => (
+            <motion.div 
+                whileHover={{ y: -5 }}
+                className="glass-panel p-6 rounded-xl border border-gray-800 hover:border-terminal/50 transition-all duration-300"
+            >
+                <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                    <i data-lucide="folder-git-2" className="text-terminal w-5 h-5"></i> {title}
+                </h3>
+                <div className="space-y-3 text-sm text-gray-400 mb-6">
+                    <p><span className="text-alert font-mono">! PROBLEM:</span> {problem}</p>
+                    <p><span className="text-terminal font-mono">> SOLUTION:</span> {solution}</p>
+                    <p><span className="text-white font-mono">= RESULT:</span> {result}</p>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                    {tags.map((tag, i) => (
+                        <span key={i} className="text-xs font-mono bg-gray-800 px-2 py-1 rounded text-gray-300 border border-gray-700">{tag}</span>
+                    ))}
+                </div>
+            </motion.div>
+        );
+
+        const StatBox = ({ label, value, icon }) => (
+            <motion.div 
+                whileHover={{ y: -5 }}
+                className="glass-panel p-4 rounded-lg flex items-center gap-4 border-t border-transparent hover:border-terminal/50"
+            >
+                <div className="p-3 bg-terminal/10 rounded-lg text-terminal">
+                    {icon}
+                </div>
                 <div>
-                    <h3 class="text-xl font-semibold mb-4 text-cyan-400 flex items-center"><i data-lucide="terminal-square" class="w-5 h-5 mr-2"></i> OS & Scripting</h3>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="bg-slate-800 border border-slate-700 text-slate-300 text-base font-medium px-4 py-2 rounded-lg shadow-sm">RHEL / CentOS</span>
-                        <span class="bg-slate-800 border border-slate-700 text-slate-300 text-base font-medium px-4 py-2 rounded-lg shadow-sm">Ubuntu Server / Debian</span>
-                        <span class="bg-slate-800 border border-slate-700 text-slate-300 text-base font-medium px-4 py-2 rounded-lg shadow-sm">Advanced Bash Scripting</span>
-                    </div>
+                    <div className="text-2xl font-bold font-mono text-white">{value}</div>
+                    <div className="text-xs text-gray-500 uppercase tracking-wider">{label}</div>
                 </div>
-                
-                <!-- Category 2 -->
-                <div>
-                    <h3 class="text-xl font-semibold mb-4 text-cyan-400 flex items-center"><i data-lucide="play-circle" class="w-5 h-5 mr-2"></i> Automation & Config Mgmt</h3>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="bg-slate-800 border border-slate-700 text-slate-300 text-base font-medium px-4 py-2 rounded-lg shadow-sm">Ansible (Playbooks, Roles)</span>
-                        <span class="bg-slate-800 border border-slate-700 text-slate-300 text-base font-medium px-4 py-2 rounded-lg shadow-sm">Jenkins / GitLab CI/CD</span>
-                        <span class="bg-slate-800 border border-slate-700 text-slate-300 text-base font-medium px-4 py-2 rounded-lg shadow-sm">Git</span>
-                    </div>
-                </div>
+            </motion.div>
+        );
 
-                <!-- Category 3 -->
-                <div>
-                    <h3 class="text-xl font-semibold mb-4 text-cyan-400 flex items-center"><i data-lucide="cloud-cog" class="w-5 h-5 mr-2"></i> Cloud, Containers & HPC</h3>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="bg-slate-800 border border-slate-700 text-slate-300 text-base font-medium px-4 py-2 rounded-lg shadow-sm">AWS (EC2, S3, VPC, IAM)</span>
-                        <span class="bg-slate-800 border border-slate-700 text-slate-300 text-base font-medium px-4 py-2 rounded-lg shadow-sm">Slurm Workload Manager</span>
-                        <span class="bg-slate-800 border border-slate-700 text-slate-300 text-base font-medium px-4 py-2 rounded-lg shadow-sm">Lustre Filesystem</span>
-                    </div>
-                </div>
-
-                <!-- Category 4 -->
-                <div>
-                    <h3 class="text-xl font-semibold mb-4 text-cyan-400 flex items-center"><i data-lucide="bar-chart-horizontal" class="w-5 h-5 mr-2"></i> Services & Monitoring</h3>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="bg-slate-800 border border-slate-700 text-slate-300 text-base font-medium px-4 py-2 rounded-lg shadow-sm">Nginx / Apache</span>
-                        <span class="bg-slate-800 border border-slate-700 text-slate-300 text-base font-medium px-4 py-2 rounded-lg shadow-sm">Prometheus & Grafana</span>
-                        <span class="bg-slate-800 border border-slate-700 text-slate-300 text-base font-medium px-4 py-2 rounded-lg shadow-sm">Nagios / Dynatrace</span>
-                        <span class="bg-slate-800 border border-slate-700 text-slate-300 text-base font-medium px-4 py-2 rounded-lg shadow-sm">Firewalld / iptables</span>
-                        <span class="bg-slate-800 border border-slate-700 text-slate-300 text-base font-medium px-4 py-2 rounded-lg shadow-sm">LDAP / NFS / Samba</span>
-                    </div>
-                </div>
+        const CertBadge = ({ name, icon }) => (
+            <div className="flex items-center gap-3 bg-gray-900/50 px-4 py-3 rounded border border-gray-800 hover:border-terminal/30 transition-colors">
+                <i data-lucide={icon} className="text-terminal w-5 h-5"></i>
+                <span className="text-sm font-mono text-gray-300">{name}</span>
             </div>
-        </section>
+        );
 
-        <!-- Professional Experience Section -->
-        <section id="experience" class="py-20 md:py-28 scroll-mt-20 bg-slate-900 rounded-3xl shadow-lg border border-slate-800 fade-in-section">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-slate-100 mb-16">Professional Experience</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-1 gap-12 max-w-3xl mx-auto">
-                
-                <!-- Job 1 -->
-                <div class="bg-black p-8 rounded-2xl shadow-xl border border-slate-800">
-                    <div class="flex items-center mb-3">
-                        <i data-lucide="briefcase" class="w-6 h-6 mr-3 text-cyan-400"></i>
-                        <h3 class="text-2xl font-semibold text-slate-100">Linux / HPC System Administrator – L2</h3>
-                    </div>
-                    <h4 class="text-lg font-medium text-slate-400 mb-1">Eviden (Client: IIT Kharagpur HPC Facility)</h4>
-                    <p class="text-sm text-slate-500 mb-4">Jan 2024 – Present | Kharagpur, West Bengal</p>
-                    <ul class="list-disc list-outside ml-5 space-y-2 text-slate-300">
-                        <li>Administering 450+ HPC compute nodes and 5PB+ DDN/Lustre storage.</li>
-                        <li>Responsible for Slurm workload manager operations (queues, fair-share, debugging).</li>
-                        <li>Providing end-to-end support to research users (software, environment modules, MPI, job submission).</li>
-                        <li>Developing and maintaining Ansible automation for patching, configuration, and node provisioning.</li>
-                        <li>Handling production incidents as the single-point owner for uptime, recovery, and SLA compliance.</li>
-                        <li>Managing user accounts, LDAP access policies, and application permissions.</li>
-                    </ul>
-                </div>
+        const LinkedInSignal = () => {
+            return (
+                <motion.a
+                    href="https://www.linkedin.com/in/vishal-jadhav-7066vj/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ 
+                        scale: 1.05, 
+                        borderColor: "rgba(59, 130, 246, 0.8)",
+                        boxShadow: "0 0 20px rgba(59, 130, 246, 0.3)" 
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                    className="relative flex items-center gap-3 px-4 py-2 border border-blue-500/30 bg-blue-500/10 rounded text-blue-400 text-sm font-mono tracking-wide group overflow-hidden"
+                >
+                    <div className="absolute top-0 left-[-100%] w-1/2 h-full bg-gradient-to-r from-transparent via-blue-400/20 to-transparent skew-x-12 group-hover:left-[200%] transition-all duration-700 ease-in-out" />
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="relative z-10">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                        <rect x="2" y="9" width="4" height="12"></rect>
+                        <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                    <span className="relative z-10 font-bold hidden sm:inline">LINKEDIN</span>
+                    <span className="relative flex h-2 w-2 ml-1">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                    </span>
+                </motion.a>
+            );
+        };
 
-                <!-- Job 2 -->
-                <div class="bg-black p-8 rounded-2xl shadow-xl border border-slate-800">
-                    <div class="flex items-center mb-3">
-                        <i data-lucide="briefcase" class="w-6 h-6 mr-3 text-cyan-400"></i>
-                        <h3 class="text-2xl font-semibold text-slate-100">Linux Administrator – L2</h3>
-                    </div>
-                    <h4 class="text-lg font-medium text-slate-400 mb-1">Capgemini</h4>
-                    <p class="text-sm text-slate-500 mb-4">Jul 2022 – Jan 2024 | Pune, India</p>
-                    <ul class="list-disc list-outside ml-5 space-y-2 text-slate-300">
-                        <li>Managed 2000+ Linux servers (RHEL, CentOS) in a large-scale enterprise environment.</li>
-                        <li>Performed OS patching, Satellite fixes, kernel upgrades, and LVM resizing.</li>
-                        <li>Handled incidents and alerts from Nagios & Dynatrace (CPU/Disk usage, memory leaks).</li>
-                        <li>Executed Change Management operations via ServiceNow, following ITIL standards.</li>
-                        <li>Managed user accounts, sudo privileges, filesystem ACLs, and OS-level hardening.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- Key Projects Section -->
-        <section id="projects" class="py-20 md:py-28 scroll-mt-20 fade-in-section">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-slate-100 mb-16">Key Projects</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                
-                <!-- Project 1 -->
-                <div class="bg-black p-8 rounded-2xl shadow-lg border border-slate-800 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-cyan-500/10 hover:shadow-xl">
-                    <h3 class="text-2xl font-semibold text-slate-100 mb-3">HPC Node & Config Automation</h3>
-                    <p class="text-slate-400 leading-relaxed mb-6">
-                        <strong class="text-slate-200">Problem:</strong> Manually provisioning and patching 450+ HPC nodes was slow and created configuration drift.
-                        <br>
-                        <strong class="text-slate-200">Solution:</strong> Developed Ansible playbooks to automate OS patching, security hardening, and user account creation, ensuring all nodes are consistent.
-                        <br>
-                        <strong class="text-slate-200">Result:</strong> Reduced manual effort by over 90% and guaranteed identical configurations across the entire cluster.
-                    </p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-purple-900/50 text-purple-300 text-sm font-semibold px-3 py-1 rounded-full">Ansible</span>
-                        <span class="bg-slate-800 text-slate-400 text-sm font-semibold px-3 py-1 rounded-full">Bash</span>
-                        <span class="bg-slate-800 text-slate-400 text-sm font-semibold px-3 py-1 rounded-full">HPC</span>
-                        <span class="bg-slate-800 text-slate-400 text-sm font-semibold px-3 py-1 rounded-full">Linux Hardening</span>
-                    </div>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="bg-black p-8 rounded-2xl shadow-lg border border-slate-800 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-cyan-500/10 hover:shadow-xl">
-                    <h3 class="text-2xl font-semibold text-slate-100 mb-3">Enterprise Server Monitoring</h3>
-                    <p class="text-slate-400 leading-relaxed mb-6">
-                        <strong class="text-slate-200">Problem:</strong> Lack of proactive monitoring on 2000+ servers led to reactive firefighting for CPU, memory, and disk issues.
-                        <br>
-                        <strong class="text-slate-200">Solution:</strong> Deployed and configured Nagios & Dynatrace agents to monitor key system metrics. Created custom alert rules and dashboards.
-                        <br>
-                        <strong class="text-slate-200">Result:</strong> Enabled proactive incident response, reducing critical downtime by ~30% by catching issues before they impacted users.
-                    </p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-purple-900/50 text-purple-300 text-sm font-semibold px-3 py-1 rounded-full">Nagios</span>
-                        <span class="bg-slate-800 text-slate-400 text-sm font-semibold px-3 py-1 rounded-full">Dynatrace</span>
-                        <span class="bg-slate-800 text-slate-400 text-sm font-semibold px-3 py-1 rounded-full">Monitoring</span>
-                        <span class="bg-slate-800 text-slate-400 text-sm font-semibold px-3 py-1 rounded-full">ITIL</span>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Certifications Section -->
-        <section id="certifications" class="py-20 md:py-28 scroll-mt-20 bg-slate-900 rounded-3xl shadow-lg border border-slate-800 fade-in-section">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-slate-100 mb-16">Certifications</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-                <!-- Certification Card -->
-                <div class="flex items-center bg-black p-5 rounded-xl shadow-sm border border-slate-800">
-                    <div class="bg-cyan-900/50 p-3 rounded-full mr-5">
-                        <i data-lucide="award" class="w-6 h-6 text-cyan-400"></i>
-                    </div>
-                    <span class="text-lg font-semibold text-slate-200">Red Hat Certified System Administrator (RHCSA)</span>
-                </div>
-                <!-- Certification Card -->
-                <div class="flex items-center bg-black p-5 rounded-xl shadow-sm border border-slate-800">
-                    <div class="bg-cyan-900/50 p-3 rounded-full mr-5">
-                        <i data-lucide="award" class="w-6 h-6 text-cyan-400"></i>
-                    </div>
-                    <span class="text-lg font-semibold text-slate-200">Red Hat Certified Engineer (RHCE)</span>
-                </div>
-                <!-- Certification Card -->
-                <div class="flex items-center bg-black p-5 rounded-xl shadow-sm border border-slate-800">
-                    <div class="bg-cyan-900/50 p-3 rounded-full mr-5">
-                        <i data-lucide="award" classs="w-6 h-6 text-cyan-400"></i>
-                    </div>
-                    <span class="text-lg font-semibold text-slate-200">ITIL 4 Foundation</span>
-                </div>
-                <!-- Certification Card -->
-                <div class="flex items-center bg-black p-5 rounded-xl shadow-sm border border-slate-800">
-                    <div class="bg-cyan-900/50 p-3 rounded-full mr-5">
-                        <i data-lucide="award" class="w-6 h-6 text-cyan-400"></i>
-                    </div>
-                    <span class="text-lg font-semibold text-slate-200">Foundation of Project Management</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <!-- This is a simple CTA linking to the contact page -->
-        <section id="contact" class="py-20 md:py-28 scroll-mt-20 text-center fade-in-section">
-            <h2 class="text-3xl md:text-4xl font-bold text-slate-100 mb-4">Let's Work Together</h2>
-            <p class="text-lg text-slate-400 mb-8 max-w-xl mx-auto">
-                I'm always open to discussing new opportunities, projects, or just chatting about tech.
-            </p>
-            <div class="flex justify-center">
-                <a href="contact.html" class="flex items-center justify-center w-full sm:w-auto bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 text-black font-semibold px-6 py-3 rounded-xl shadow-lg hover:opacity-90 transition-all duration-300 transform hover:-translate-y-0.5">
-                    <i data-lucide="mail" class="w-5 h-5 mr-2"></i>
-                    Go to Contact Page
-                </a>
-            </div>
-
-            <!-- MODIFICATION: Added LinkedIn and Email links here -->
-            <div class="flex justify-center items-center gap-6 mt-12">
-                <p class="text-slate-500">Or connect directly:</p>
-                <a href="https://www.linkedin.com/in/vishal-jadhav-7066vj/" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-cyan-400 transition-colors duration-300">
-                    <span class="sr-only">LinkedIn</span>
-                    <i data-lucide="linkedin" class="w-8 h-8"></i>
-                </a>
-                <a href="mailto:vishaljadhav.linux@gmail.com" class="text-slate-400 hover:text-cyan-400 transition-colors duration-300">
-                    <span class="sr-only">Email</span>
-                    <i data-lucide="mail-check" class="w-8 h-8"></i> <!-- Changed to mail-check for variety -->
-                </a>
-            </div>
-            <!-- END MODIFICATION -->
-
-        </section>
-
-    </div>
-
-    <!-- Footer -->
-    <footer class="text-center py-8 bg-black border-t border-slate-800">
-        <p class="text-slate-500">&copy; 2025 Vishal Jadhav. All rights reserved.</p>
-    </footer>
-
-    <!-- Simple JS for Mobile Menu Toggle -->
-    <script>
-        const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // Close menu when a link is clicked
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        });
-
-        // --- Scroll Animation & Icon Init ---
-        (function() {
-            // Init Lucide Icons
-            lucide.createIcons();
-
-            // Scroll Animation Observer
-            const sections = document.querySelectorAll('.fade-in-section');
-            
-            const observerOptions = {
-                root: null, // relative to the viewport
-                rootMargin: '0px',
-                threshold: 0.1 // 10% of the element must be visible
+        const ContactSection = () => {
+            const [status, setStatus] = useState('idle'); 
+            const handleSubmit = async (e) => {
+                e.preventDefault();
+                const form = e.target;
+                const data = new FormData(form);
+                setStatus('submitting');
+                try {
+                    const response = await fetch("https://formspree.io/f/xwpwgegj", {
+                        method: "POST",
+                        body: data,
+                        headers: { 'Accept': 'application/json' }
+                    });
+                    if (response.ok) { setStatus('success'); form.reset(); } 
+                    else { setStatus('error'); }
+                } catch (error) { setStatus('error'); }
             };
 
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        observer.unobserve(entry.target); // Stop observing once it's visible
-                    }
-                });
-            }, observerOptions);
+            return (
+                <section id="contact" className="max-w-2xl mx-auto mb-24">
+                    <h2 className="text-2xl font-mono text-white mb-12 flex items-center gap-3">
+                        <span className="text-terminal">./</span>ESTABLISH_UPLINK
+                        <div className="h-px bg-gray-800 flex-grow ml-4"></div>
+                    </h2>
 
-            sections.forEach(section => {
-                observer.observe(section);
-            });
+                    <div className="glass-panel p-8 rounded-xl border border-gray-800 relative overflow-hidden">
+                        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-terminal/50 to-transparent opacity-50"></div>
+                        <p className="text-gray-400 mb-8 font-mono text-sm">
+                            // SEND_PACKET_TO: <span className="text-terminal">vishaljadhav.linux@gmail.com</span>
+                        </p>
 
-        })();
+                        {status === 'success' ? (
+                            <motion.div 
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                className="text-center py-12 border border-terminal/20 rounded bg-terminal/5"
+                            >
+                                <div className="inline-flex p-4 rounded-full bg-terminal/10 text-terminal mb-4">
+                                    <i data-lucide="check-circle-2" className="w-12 h-12"></i>
+                                </div>
+                                <h3 className="text-xl font-bold text-white mb-2">TRANSMISSION SUCCESSFUL</h3>
+                                <p className="text-gray-400 font-mono text-sm">Packet delivery confirmed. Stand by for response.</p>
+                                <button onClick={() => setStatus('idle')} className="mt-6 text-xs font-mono text-terminal hover:underline">[SEND_NEW_MESSAGE]</button>
+                            </motion.div>
+                        ) : (
+                            <form onSubmit={handleSubmit} className="space-y-6">
+                                <div>
+                                    <label htmlFor="name" className="block text-xs font-mono text-terminal mb-2 uppercase tracking-wider">> Identity_String (Name)</label>
+                                    <input type="text" name="name" id="name" required className="w-full bg-black/50 border border-gray-700 rounded p-3 text-white focus:border-terminal focus:outline-none focus:ring-1 focus:ring-terminal/50 transition-all font-mono text-sm placeholder-gray-700" placeholder="Enter your name..." />
+                                </div>
+                                <div>
+                                    <label htmlFor="email" className="block text-xs font-mono text-terminal mb-2 uppercase tracking-wider">> Return_Address (Email)</label>
+                                    <input type="email" name="email" id="email" required className="w-full bg-black/50 border border-gray-700 rounded p-3 text-white focus:border-terminal focus:outline-none focus:ring-1 focus:ring-terminal/50 transition-all font-mono text-sm placeholder-gray-700" placeholder="name@company.com" />
+                                </div>
+                                <div>
+                                    <label htmlFor="message" className="block text-xs font-mono text-terminal mb-2 uppercase tracking-wider">> Payload (Message)</label>
+                                    <textarea name="message" id="message" rows="5" required className="w-full bg-black/50 border border-gray-700 rounded p-3 text-white focus:border-terminal focus:outline-none focus:ring-1 focus:ring-terminal/50 transition-all font-mono text-sm placeholder-gray-700" placeholder="Initialize communication protocols..."></textarea>
+                                </div>
+                                <button type="submit" disabled={status === 'submitting'} className="w-full bg-terminal/10 border border-terminal/50 text-terminal font-mono font-bold py-4 rounded hover:bg-terminal hover:text-black transition-all duration-300 uppercase tracking-widest flex items-center justify-center gap-2 group disabled:opacity-50 disabled:cursor-not-allowed">
+                                    {status === 'submitting' ? <><i data-lucide="loader-2" className="w-4 h-4 animate-spin"></i> UPLOADING...</> : <><i data-lucide="send" className="w-4 h-4 group-hover:translate-x-1 transition-transform"></i> TRANSMIT_DATA</>}
+                                </button>
+                                {status === 'error' && <p className="text-red-500 text-xs font-mono text-center mt-2">ERROR: Connection Refused. Please check inputs.</p>}
+                            </form>
+                        )}
+                    </div>
+                </section>
+            );
+        };
+
+        // --- MAIN APP ---
+        const App = () => {
+            const [loading, setLoading] = useState(true);
+
+            useEffect(() => {
+                lucide.createIcons();
+            }, []);
+
+            return (
+                <div className="min-h-screen bg-grid-pattern bg-[length:40px_40px] relative">
+                    <AnimatePresence>
+                        {loading && <SplashScreen onComplete={() => setLoading(false)} />}
+                    </AnimatePresence>
+
+                    {!loading && (
+                        <div className="fixed inset-0 bg-gradient-to-b from-void via-void/95 to-void pointer-events-none"></div>
+                    )}
+
+                    {!loading && (
+                        <main className="relative z-10 container mx-auto px-4 sm:px-6 pb-20">
+                            
+                            {/* Header */}
+                            <motion.nav 
+                                initial={{ y: -50, opacity: 0 }}
+                                animate={{ y: 0, opacity: 1 }}
+                                transition={{ duration: 0.5 }}
+                                className="flex flex-wrap justify-between items-center py-6 border-b border-gray-800/50 gap-4"
+                            >
+                                <div className="font-mono font-bold text-xl tracking-tighter text-white">
+                                    VISHAL<span className="text-terminal">_JADHAV</span>
+                                </div>
+                                
+                                <div className="flex items-center gap-3 sm:gap-4 ml-auto">
+                                    <LinkedInSignal />
+                                    <a href="mailto:vishalsjadhav70@gmail.com" className="flex items-center gap-2 px-4 py-2 border border-terminal/30 rounded text-terminal text-sm font-mono hover:bg-terminal/10 transition-colors">
+                                        <i data-lucide="mail" className="w-4 h-4"></i>
+                                        <span className="hidden sm:inline">CONNECT</span>
+                                    </a>
+                                </div>
+                            </motion.nav>
+
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.2, duration: 0.6 }}
+                            >
+                                <TerminalHero />
+                            </motion.div>
+
+                            <motion.div 
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ delay: 0.4, duration: 0.6 }}
+                                className="text-center max-w-3xl mx-auto mb-20"
+                            >
+                                <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">
+                                    Guardian of the <span className="text-terminal">Grid.</span>
+                                </h1>
+                                <p className="text-gray-400 text-lg leading-relaxed">
+                                    HPC Infrastructure Engineer specializing in supercomputing clusters and large-scale Linux environments. 
+                                    Currently managing high-performance infrastructure at <span className="text-white font-semibold">IIT Kharagpur & NCMRWF Delhi</span>.
+                                </p>
+                                
+                                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-12">
+                                    <StatBox label="Servers Managed" value="2,000+" icon={<i data-lucide="server" className="w-6 h-6"></i>} />
+                                    <StatBox label="Uptime" value="99.9%" icon={<i data-lucide="activity" className="w-6 h-6"></i>} />
+                                    <StatBox label="Experience" value="3+ Yrs" icon={<i data-lucide="clock" className="w-6 h-6"></i>} />
+                                </div>
+                            </motion.div>
+
+                            <div className="max-w-4xl mx-auto mb-24">
+                                <h2 className="text-2xl font-mono text-white mb-12 flex items-center gap-3">
+                                    <span className="text-terminal">./</span>CAREER_LOGS
+                                    <div className="h-px bg-gray-800 flex-grow ml-4"></div>
+                                </h2>
+
+                                <div className="pl-4 md:pl-0">
+                                    <ExperienceCard 
+                                        role="HPC Engineer"
+                                        company="Eviden (Atos) | IIT Kharagpur | NCMRWF Delhi"
+                                        date="Feb 2025 – Present"
+                                        active={true}
+                                        description={[
+                                            "Managing 450+ HPC compute nodes and 5PB+ DDN/Lustre storage for high-availability research.",
+                                            "Optimizing Slurm workload manager queues and debugging parallel application issues (MPI).",
+                                            "Executing system-level hardware diagnostics and node provisioning automations."
+                                        ]}
+                                        tech={["HPC", "Slurm", "Lustre", "Ansible"]}
+                                    />
+
+                                    <ExperienceCard 
+                                        role="Linux Administrator L2"
+                                        company="Capgemini"
+                                        date="July 2022 – Jan 2025"
+                                        active={false}
+                                        description={[
+                                            "Managed 2000+ RHEL/CentOS servers (Physical & Virtual) ensuring enterprise stability.",
+                                            "Performed critical OS patching, Satellite fixes, and kernel upgrades across Prod/Non-Prod.",
+                                            "Mastered LVM resizing and filesystem management for dynamic storage allocation.",
+                                            "Led Incident Management via ServiceNow, resolving Nagios/Dynatrace alerts."
+                                        ]}
+                                        tech={["RHEL", "LVM", "ServiceNow", "Nagios", "Virtualization"]}
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="max-w-4xl mx-auto mb-24">
+                                <h2 className="text-2xl font-mono text-white mb-12 flex items-center gap-3">
+                                    <span className="text-terminal">./</span>DEPLOYED_PROTOCOLS
+                                    <div className="h-px bg-gray-800 flex-grow ml-4"></div>
+                                </h2>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <ProjectCard 
+                                        title="HPC Node Automation"
+                                        problem="Manual provisioning of 450+ nodes caused drift."
+                                        solution="Developed Ansible playbooks for OS patching & hardening."
+                                        result="90% reduction in manual effort; identical config across cluster."
+                                        tags={["Ansible", "Bash", "Security"]}
+                                    />
+                                    <ProjectCard 
+                                        title="Enterprise Monitoring"
+                                        problem="Reactive firefighting for 2000+ servers."
+                                        solution="Deployed custom Nagios/Dynatrace alert rules & dashboards."
+                                        result="Reduced critical downtime by 30% via proactive response."
+                                        tags={["Nagios", "Dynatrace", "ITIL"]}
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="max-w-4xl mx-auto mb-24">
+                                <h2 className="text-2xl font-mono text-white mb-12 flex items-center gap-3">
+                                    <span className="text-terminal">./</span>SECURITY_CLEARANCE
+                                    <div className="h-px bg-gray-800 flex-grow ml-4"></div>
+                                </h2>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                                    <CertBadge name="RHCSA (Red Hat)" icon="shield-check" />
+                                    <CertBadge name="RHCE (Red Hat)" icon="shield-alert" />
+                                    <CertBadge name="ITIL 4 Foundation" icon="book-check" />
+                                    <CertBadge name="Project Mgmt" icon="award" />
+                                </div>
+                            </div>
+
+                            <div className="max-w-4xl mx-auto">
+                                <h2 className="text-2xl font-mono text-white mb-12 flex items-center gap-3">
+                                    <span className="text-terminal">./</span>KERNEL_MODULES
+                                    <div className="h-px bg-gray-800 flex-grow ml-4"></div>
+                                </h2>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div className="glass-panel p-6 rounded-xl">
+                                        <h3 className="text-white font-bold mb-4 flex items-center gap-2">
+                                            <i data-lucide="cpu" className="text-terminal w-5 h-5"></i> Core Operations
+                                        </h3>
+                                        <div className="flex flex-wrap gap-2">
+                                            {['RHEL 5-9', 'HPC Clustering', 'Slurm', 'User Mgmt', 'Lustre Filesystem'].map((s, i) => (
+                                                <span key={i} className="text-sm text-gray-300 bg-gray-800 px-2 py-1 rounded">{s}</span>
+                                            ))}
+                                        </div>
+                                    </div>
+                                    <div className="glass-panel p-6 rounded-xl">
+                                        <h3 className="text-white font-bold mb-4 flex items-center gap-2">
+                                            <i data-lucide="hard-drive" className="text-terminal w-5 h-5"></i> Tools & Cloud
+                                        </h3>
+                                        <div className="flex flex-wrap gap-2">
+                                            {['Ansible', 'Satellite', 'Nagios', 'Dynatrace', 'AWS (EC2/S3)', 'ServiceNow'].map((s, i) => (
+                                                <span key={i} className="text-sm text-gray-300 bg-gray-800 px-2 py-1 rounded">{s}</span>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="h-24"></div>
+
+                            <ContactSection />
+
+                            <footer className="mt-32 text-center border-t border-gray-900 pt-12">
+                                <p className="text-gray-600 font-mono text-sm">
+                                    SYSTEM STATUS: <span className="text-terminal">OPERATIONAL</span>
+                                </p>
+                                <p className="text-gray-700 text-xs mt-2">
+                                    © 2025 Vishal Santosh Jadhav. End of Line.
+                                </p>
+                            </footer>
+                        </main>
+                    )}
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
     </script>
-
 </body>
 </html>
